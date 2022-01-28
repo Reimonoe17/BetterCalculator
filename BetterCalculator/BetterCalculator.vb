@@ -11,8 +11,10 @@ Option Compare Text
 Module BetterCalculator
 
     Sub Main()
+        'This subroutine runs on repeat until "Q" is input
         Calculations()
 
+        'Ends the program and leaves the user with a farewell
         Console.WriteLine("You Entered " & Chr(34) & "Q" & Chr(34) & vbNewLine & "Have a Nice Day" & vbNewLine & "Press ENTER to close this window")
         Console.ReadLine()
     End Sub
@@ -35,9 +37,13 @@ Module BetterCalculator
             Do
                 Console.WriteLine("Choose a Number: ")
                 firstInput = Console.ReadLine()
+
+                'Tests for Q to end the Subroutine
                 If firstInput = "Q" Then
                     Exit Sub
                 End If
+
+                'Verifies if the value is a whole number, restarts the loop if it doesn't
                 Try
                     firstNumber = CInt(firstInput)
                     firstRight = True
@@ -47,6 +53,8 @@ Module BetterCalculator
                 End Try
             Loop Until firstRight = True
             Console.WriteLine("You entered: " & firstInput)
+
+            'Asks user for the second input, verify whole number and checking for Q as before
             Do
                 Console.WriteLine("Choose another Number: ")
                 secondInput = Console.ReadLine()
@@ -74,7 +82,8 @@ Module BetterCalculator
                     End If
                     thirdNumber = CInt(thirdInput)
 
-                    Select Case thirdNumber
+                'Selects which math function to proceed with 
+                Select Case thirdNumber
                         Case 1
                             thirdRight = True
                             answer = firstNumber + secondNumber
@@ -96,7 +105,8 @@ Module BetterCalculator
                     End Select
                 Loop Until thirdRight = True
 
-            Loop
+            'The program will continue to loop until a "Q" is typed, whereupon it exits the subroutine
+        Loop
     End Sub
 
 End Module
